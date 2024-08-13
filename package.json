@@ -10,7 +10,15 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.3",
+    "@vite-pwa/nuxt": "^0.9.1",
+    "bulma": "^1.0.2",
+    "easy-kit-component": "^0.2.0",
+    "easy-kit-utils": "^0.0.2",
     "nuxt": "^3.12.4",
-    "vue": "latest"
+    "pinia": "^2.2.1",
+    "vite-plugin-pwa": "^0.20.1",
+    "vue": "latest",
+    "vue-router": "^4.4.3"
   }
 }

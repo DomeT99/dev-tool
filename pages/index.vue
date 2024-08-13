@@ -1,1 +1,1 @@
-<template>New Entry Point</template>
+<template></template>
