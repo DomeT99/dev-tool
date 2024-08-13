@@ -1,0 +1,1 @@
+<template>New Entry Point</template>
