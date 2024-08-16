@@ -1,6 +1,8 @@
 <template>
-  <VitePwaManifest />
-  <section>
-    <slot />
-  </section>
+  <Html data-theme="light">
+    <VitePwaManifest />
+    <section>
+      <slot />
+    </section>
+  </Html>
 </template>

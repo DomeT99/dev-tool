@@ -4,7 +4,8 @@ export default defineNuxtConfig({
     port: 3001,
   },
   modules: ["@pinia/nuxt", "@vite-pwa/nuxt"],
-  css: ["/node_modules/bulma/css/versions/bulma-no-dark-mode.min.css"],
+  css:["/assets/index.scss"],
+  //css: ["/node_modules/bulma/css/versions/bulma-no-dark-mode.min.css"],
   //  css: ["/node_modules/bulma/css/bulma.min.css"],
   imports: {
     presets: [
