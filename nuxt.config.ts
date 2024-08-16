@@ -1,10 +1,13 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   devServer: {
     port: 3001,
   },
+
   modules: ["@pinia/nuxt", "@vite-pwa/nuxt"],
   css:["/assets/index.scss"],
+
   //css: ["/node_modules/bulma/css/versions/bulma-no-dark-mode.min.css"],
   //  css: ["/node_modules/bulma/css/bulma.min.css"],
   imports: {
@@ -27,6 +30,7 @@ export default defineNuxtConfig({
       },
     ],
   },
+
   pwa: {
     manifest: {
       name: "Dev.tool",
@@ -81,6 +85,7 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
+
   runtimeConfig: {
     public: {
       apiKey: process.env.FIREBASE_API_KEY,
@@ -92,4 +97,6 @@ export default defineNuxtConfig({
       appCollection: process.env.FIREBASE_APP_COLLECTION,
     },
   },
+
+  compatibilityDate: "2024-08-16",
 });

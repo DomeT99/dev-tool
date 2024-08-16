@@ -1,0 +1,11 @@
+.navbar {
+  border-bottom: 2px solid $gray !important;
+  height: 7vh;
+  box-shadow:0 0 0.200em 0 $gray !important;
+  .control {
+    cursor: pointer;
+  }
+  .navbar-item{
+    font-weight: 700;
+  }
+}
