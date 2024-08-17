@@ -1,9 +1,9 @@
 <template>
-  <Html class="has-navbar-fixed-top" data-theme="light">
+  <Html data-theme="light">
     <VitePwaManifest />
-    <section>
+    <CommonNavbar />
+    <section class="min-h-100">
       <slot />
     </section>
   </Html>
-  <CommonNavbar />
 </template>

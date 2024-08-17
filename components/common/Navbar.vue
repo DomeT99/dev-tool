@@ -20,8 +20,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav class="navbar is-fixed-top">
+  <nav class="navbar">
     <div class="navbar-brand">
+      <div class="navbar-item">
+        <figure class="image is-32x32">
+          <img src="/public/pwa-152x152.png" alt="" />
+        </figure>
+      </div>
       <div class="navbar-burger js-burger" data-target="navbar-id">
         <span></span>
         <span></span>
