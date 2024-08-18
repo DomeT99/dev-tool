@@ -5,7 +5,7 @@ import { EButton } from "easy-kit-component";
 
 <template>
   <form class="card container is-max-tablet p-6">
-    <h1 class="title has-text-centered">Welcome back</h1>
+    <h1 class="title has-text-centered">Create new account</h1>
 
     <div class="field">
       <label class="label">Email</label>
@@ -23,27 +23,42 @@ import { EButton } from "easy-kit-component";
       <div class="control">
         <input
           class="input is-medium"
-          placeholder="Enter your password"
+          placeholder="Enter a password"
+          type="password"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Confirm Password</label>
+      <div class="control">
+        <input
+          class="input is-medium"
+          placeholder="Confirm password"
+          type="password"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">API Key</label>
+      <div class="control">
+        <input
+          class="input is-medium"
+          placeholder="Enter your API key"
           type="password"
         />
       </div>
     </div>
 
     <div class="control mt-6">
-      <EButton class="button is-primary is-medium w-100">Sign In</EButton>
+      <EButton class="button is-primary is-medium w-100">Sign Up</EButton>
     </div>
 
     <div class="control mt-4 has-text-centered">
       <p class="is-size-6">
-        Don't have an account? <NuxtLink to="/signup">Sign up</NuxtLink>
+        Already have an account? <NuxtLink to="/login">Continue</NuxtLink>
       </p>
-    </div>
-    <hr />
-    <div class="control mt-4 has-text-centered">
-      <p class="is-size-6">OR</p>
-    </div>
-    <div class="control mt-4 has-text-centered">
-      <CommonGoogleButton label="Sign in with Google" />
     </div>
   </form>
 </template>

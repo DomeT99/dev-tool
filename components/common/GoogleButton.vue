@@ -1,3 +1,6 @@
+<script setup lang="ts">
+defineProps<{ label?: string }>();
+</script>
 <template>
   <button class="gsi-material-button">
     <div class="gsi-material-button-state"></div>
@@ -29,8 +32,10 @@
           <path fill="none" d="M0 0h48v48H0z"></path>
         </svg>
       </div>
-      <span class="gsi-material-button-contents">Sign in with Google</span>
-      <span style="display: none">Sign in with Google</span>
+      <span class="gsi-material-button-contents"
+        >{{ label ?? "Sign in with Google" }}</span
+      >
+      <span style="display: none">{{ label ?? "Sign in with Google" }}</span>
     </div>
   </button>
 </template>
@@ -57,11 +62,12 @@
   padding: 0 12px;
   position: relative;
   text-align: center;
-  -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
-  transition: background-color .218s, border-color .218s, box-shadow .218s;
+  -webkit-transition: background-color 0.218s, border-color 0.218s,
+    box-shadow 0.218s;
+  transition: background-color 0.218s, border-color 0.218s, box-shadow 0.218s;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%; 
+  width: 100%;
   min-width: min-content;
 }
 
@@ -82,12 +88,12 @@
   flex-wrap: nowrap;
   height: 100%;
   justify-content: space-between;
-  position: relative; 
+  position: relative;
 }
 
 .gsi-material-button .gsi-material-button-contents {
   -webkit-flex-grow: 1;
-  flex-grow: 1; 
+  flex-grow: 1;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -95,8 +101,8 @@
 }
 
 .gsi-material-button .gsi-material-button-state {
-  -webkit-transition: opacity .218s;
-  transition: opacity .218s;
+  -webkit-transition: opacity 0.218s;
+  transition: opacity 0.218s;
   bottom: 0;
   left: 0;
   opacity: 0;
@@ -104,6 +110,4 @@
   right: 0;
   top: 0;
 }
- 
-
 </style>
