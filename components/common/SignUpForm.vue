@@ -1,6 +1,6 @@
 <script setup lang="ts">
 //@ts-ignore
-import { EButton } from "easy-kit-component";
+import { EButton, EText } from "easy-kit-component";
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import { EButton } from "easy-kit-component";
     <div class="field">
       <label class="label">Email</label>
       <div class="control">
-        <input
+        <EText
           class="input is-medium"
           type="email"
           placeholder="Enter your email"
@@ -21,7 +21,7 @@ import { EButton } from "easy-kit-component";
     <div class="field">
       <label class="label">Password</label>
       <div class="control">
-        <input
+        <EText
           class="input is-medium"
           placeholder="Enter a password"
           type="password"
@@ -32,7 +32,7 @@ import { EButton } from "easy-kit-component";
     <div class="field">
       <label class="label">Confirm Password</label>
       <div class="control">
-        <input
+        <EText
           class="input is-medium"
           placeholder="Confirm password"
           type="password"
@@ -43,10 +43,9 @@ import { EButton } from "easy-kit-component";
     <div class="field">
       <label class="label">API Key</label>
       <div class="control">
-        <input
+        <EText
           class="input is-medium"
-          placeholder="Enter your API key"
-          type="password"
+          placeholder="Enter your API key" 
         />
       </div>
     </div>
