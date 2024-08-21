@@ -5,5 +5,6 @@
     <section class="min-h-100">
       <slot />
     </section>
+    <CommonFooter />
   </Html>
 </template>
