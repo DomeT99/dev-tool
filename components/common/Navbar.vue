@@ -37,9 +37,10 @@ onMounted(() => {
 
     <div id="navbar-id" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">Dashboard</a>
-        <a class="navbar-item">General stats</a>
-        <a class="navbar-item">Articles </a>
+        <a class="navbar-item">🗃 Dashboard</a>
+        <a class="navbar-item">📊 General stats</a>
+        <a class="navbar-item">✏️ Articles</a>
+        <a class="navbar-item">⚙️ Settings</a>
       </div>
 
       <div class="navbar-end">
