@@ -1,15 +1,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
-
+  ssr: false,
   devServer: {
     port: 3001,
   },
 
-  modules: ["@pinia/nuxt", "@vite-pwa/nuxt"],
-  css:["/assets/index.scss"],
-
-  //css: ["/node_modules/bulma/css/versions/bulma-no-dark-mode.min.css"],
-  //  css: ["/node_modules/bulma/css/bulma.min.css"],
+  modules: ["@pinia/nuxt", "@vite-pwa/nuxt", "nuxt-vuefire"],
+  css: ["/assets/index.scss"],
   imports: {
     presets: [
       { from: "@pinia/nuxt", imports: ["defineStore"] },
@@ -86,17 +83,19 @@ export default defineNuxtConfig({
     },
   },
 
-  runtimeConfig: {
-    public: {
-      apiKey: process.env.FIREBASE_API_KEY,
-      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-      appId: process.env.FIREBASE_APP_ID,
+  vuefire: {
+    auth: {
+      enabled: true,
+      sessionCookie: false,
+    },
+    config: {
+      apiKey: "AIzaSyDQfHLeLlhyxmjInkaP7gU9zYLMXgRSD14",
+      authDomain: "dev-tool-test.firebaseapp.com",
+      projectId: "dev-tool-test",
+      storageBucket: "dev-tool-test.appspot.com",
+      messagingSenderId: "731568430246",
+      appId: "1:731568430246:web:bedb41e6b84aee56e56867",
       appCollection: process.env.FIREBASE_APP_COLLECTION,
     },
   },
-
-  compatibilityDate: "2024-08-16",
 });
