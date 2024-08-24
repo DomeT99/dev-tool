@@ -1,6 +1,8 @@
 <script setup lang="ts">
 //@ts-ignore
 import { EButton, EText } from "easy-kit-component";
+
+const { trySignInWithGoogle } = useAuthComposable();
 </script>
 
 <template>
@@ -43,7 +45,10 @@ import { EButton, EText } from "easy-kit-component";
       <p class="is-size-6">OR</p>
     </div>
     <div class="control mt-4 has-text-centered">
-      <CommonGoogleButton label="Sign in with Google" />
+      <CommonGoogleButton
+        label="Sign in with Google"
+        @click="trySignInWithGoogle"
+      />
     </div>
   </form>
 </template>

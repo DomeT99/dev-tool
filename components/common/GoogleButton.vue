@@ -1,8 +1,11 @@
 <script setup lang="ts">
+//@ts-ignore
+import { EButton } from "easy-kit-component";
+
 defineProps<{ label?: string }>();
 </script>
 <template>
-  <button class="gsi-material-button">
+  <EButton class="gsi-material-button">
     <div class="gsi-material-button-state"></div>
     <div class="gsi-material-button-content-wrapper">
       <div class="gsi-material-button-icon">
@@ -37,7 +40,7 @@ defineProps<{ label?: string }>();
       >
       <span style="display: none">{{ label ?? "Sign in with Google" }}</span>
     </div>
-  </button>
+  </EButton>
 </template>
 <style scoped>
 .gsi-material-button {
