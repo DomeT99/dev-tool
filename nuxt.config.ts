@@ -1,9 +1,10 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  ssr: false,
+  ssr: true,
   devServer: {
     port: 3001,
   },
+ 
 
   modules: ["@pinia/nuxt", "@vite-pwa/nuxt", "nuxt-vuefire"],
   css: ["/assets/index.scss"],
