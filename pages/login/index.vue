@@ -5,9 +5,4 @@
       <CommonLoginForm />
     </div>
   </div>
-</template>
-<script>
-export default {
-  ssr: false,
-};
-</script>
+</template> 
