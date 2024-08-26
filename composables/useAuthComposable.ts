@@ -72,6 +72,16 @@ export const useAuthComposable = () => {
         isValid: false,
         error: "Email is required",
       };
+    } else {
+      const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const validateRegex = emailRegex.test(email);
+
+      if (validateRegex === false) {
+        return {
+          isValid: false,
+          error: "The email format you entered is invalid",
+        };
+      }
     }
 
     if (isEmptyString(password) || isNull(password)) {
