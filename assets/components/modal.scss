@@ -1,0 +1,15 @@
+.modal {
+  .modal-card-head {
+    box-shadow: none;
+    border-bottom: 2px solid $gray !important;
+  }
+
+  .modal-card-foot {
+    box-shadow: none;
+  }
+
+  .modal-card-body {
+    border-radius: 0 0 0.75rem 0.75rem;
+    min-height: 15vh;
+  }
+}
