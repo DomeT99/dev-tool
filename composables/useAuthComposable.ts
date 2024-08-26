@@ -1,3 +1,4 @@
+import type { FirebaseError } from "firebase/app";
 import {
   signInWithPopup,
   signOut,
@@ -7,7 +8,7 @@ import {
 import { useErrorStore } from "~/store/errorStore";
 import type { Registration, Validation } from "~/types/auth";
 export const useAuthComposable = () => {
-  const { triggerWarningModal } = useErrorStore();
+  const { triggerWarningModal, handleFirebaseError } = useErrorStore();
   const auth = useFirebaseAuth();
 
   const registration = ref<Registration>({
@@ -26,8 +27,8 @@ export const useAuthComposable = () => {
 
         navigateTo("/");
       })
-      .catch((error) => {
-        throw new Error(error.message);
+      .catch((error: FirebaseError) => {
+        handleFirebaseError(error);
       });
   }
 
@@ -36,8 +37,8 @@ export const useAuthComposable = () => {
       .then(() => {
         navigateTo("/login");
       })
-      .catch((error) => {
-        throw new Error(error.message);
+      .catch((error: FirebaseError) => {
+        handleFirebaseError(error);
       });
   }
 
@@ -59,8 +60,8 @@ export const useAuthComposable = () => {
 
         navigateTo("/");
       })
-      .catch((error) => {
-        throw new Error(error.message);
+      .catch((error: FirebaseError) => {
+        handleFirebaseError(error);
       });
   }
 
