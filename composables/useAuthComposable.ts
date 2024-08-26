@@ -7,30 +7,12 @@ import {
 import type { Registration, Validation } from "~/types/auth";
 export const useAuthComposable = () => {
   const auth = useFirebaseAuth();
-  const user = useCurrentUser();
-  const router = useRouter();
 
   const registration = ref<Registration>({
     email: "",
     password: "",
     confirmPassword: "",
     apiKey: "",
-  });
-
-  onMounted(() => {
-    if (isNull(user.value)) {
-      if (router.currentRoute.value.name === "login") {
-        navigateTo("/login");
-      }
-
-      if (router.currentRoute.value.name === "signup") {
-        navigateTo("/signup");
-      }
-    }
-
-    if (!isNull(user.value)) {
-      navigateTo("/");
-    }
   });
 
   function trySignInWithGoogle(): void {

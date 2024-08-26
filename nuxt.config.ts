@@ -9,8 +9,7 @@ export default defineNuxtConfig({
   modules: ["@pinia/nuxt", "@vite-pwa/nuxt", "nuxt-vuefire"],
   css: ["/assets/index.scss"],
   imports: {
-    presets: [
-      { from: "@pinia/nuxt", imports: ["defineStore"] },
+    presets: [ 
       {
         from: "easy-kit-utils",
         imports: [

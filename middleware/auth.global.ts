@@ -1,11 +1,6 @@
-export default defineNuxtRouteMiddleware(async (to, from) => { 
+export default defineNuxtRouteMiddleware(async (to, from) => {
   const user = await getCurrentUser();
-
-  if (!isNull(user) && to.name === "login") {
-    navigateTo("/");
-  }
-
-  if (!isNull(user) && to.name !== "login") {
-    navigateTo("/login");
-  }
+  if (user === null && to.fullPath !== "/login" && to.fullPath !== "/signup") {
+    return navigateTo("/login");
+  } 
 });
