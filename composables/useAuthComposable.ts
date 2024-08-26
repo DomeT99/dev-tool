@@ -4,8 +4,10 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
 } from "firebase/auth";
+import { useErrorStore } from "~/store/errorStore";
 import type { Registration, Validation } from "~/types/auth";
 export const useAuthComposable = () => {
+  const { triggerWarningModal } = useErrorStore();
   const auth = useFirebaseAuth();
 
   const registration = ref<Registration>({
@@ -43,6 +45,7 @@ export const useAuthComposable = () => {
     const validate = _validateRegistration();
 
     if (validate.isValid === false) {
+      triggerWarningModal(validate.error!);
       return;
     }
 
