@@ -2,7 +2,7 @@
 <template>
   <div class="mt-6 columns">
     <div class="column is-12">
-      <CommonLoginForm />
+      <AuthLoginForm />
     </div>
   </div>
 </template> 
