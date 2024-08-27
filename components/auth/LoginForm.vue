@@ -2,7 +2,8 @@
 //@ts-ignore
 import { EButton, EText } from "easy-kit-component";
 
-const { trySignInWithGoogle } = useAuthComposable();
+const { trySignInWithGoogle, trySigninWithEmailAndPassword, registration } =
+  useAuthComposable();
 </script>
 
 <template>
@@ -16,6 +17,7 @@ const { trySignInWithGoogle } = useAuthComposable();
           class="input is-medium"
           type="email"
           placeholder="Enter your email"
+          v-model="registration.email"
         />
       </div>
     </div>
@@ -27,12 +29,17 @@ const { trySignInWithGoogle } = useAuthComposable();
           class="input is-medium"
           placeholder="Enter your password"
           type="password"
+          v-model="registration.password"
         />
       </div>
     </div>
 
     <div class="control mt-6">
-      <EButton class="button is-primary is-medium w-100">Sign In</EButton>
+      <EButton
+        class="button is-primary is-medium w-100"
+        @click="trySigninWithEmailAndPassword"
+        >Sign In</EButton
+      >
     </div>
 
     <div class="control mt-4 has-text-centered">

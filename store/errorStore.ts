@@ -22,11 +22,34 @@ export const useErrorStore = defineStore("error", () => {
       case FirebaseTypeError.WEAK_PASSWORD:
         triggerWarningModal("Password should be at least 6 characters");
         break;
+      case FirebaseTypeError.INVALID_CREDENTIALS:
+        triggerWarningModal("Invalid credentials");
+        break;
       case FirebaseTypeError.EMAIL_ALREADY_IN_USE:
-        triggerWarningModal("Email already in use");
+        triggerWarningModal("The email is already in use");
         break;
       case FirebaseTypeError.INVALID_EMAIL:
-        triggerWarningModal("Invalid email");
+        triggerWarningModal("The email address is badly formatted");
+        break;
+      case FirebaseTypeError.USER_DISABLED:
+        triggerWarningModal("User disabled");
+        break;
+      case FirebaseTypeError.USER_NOT_FOUND:
+        triggerWarningModal("User not found");
+        break;
+      case FirebaseTypeError.WRONG_PASSWORD:
+        triggerWarningModal(
+          "The password is invalid or the user does not have a password."
+        );
+        break;
+      case FirebaseTypeError.OPERATION_NOT_ALLOWED:
+        triggerWarningModal("Operation not allowed");
+        break;
+      case FirebaseTypeError.TOO_MANY_REQUESTS:
+        triggerWarningModal("Too many requests");
+        break;
+      case FirebaseTypeError.NETWORK_REQUEST_FAILED:
+        triggerWarningModal("Network request failed");
         break;
       default:
         triggerWarningModal("Unknown error");

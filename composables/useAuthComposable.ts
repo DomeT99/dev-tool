@@ -1,6 +1,7 @@
 import type { FirebaseError } from "firebase/app";
 import {
   signInWithPopup,
+  signInWithEmailAndPassword,
   signOut,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -20,6 +21,29 @@ export const useAuthComposable = () => {
 
   function trySignInWithGoogle(): void {
     signInWithPopup(auth!, new GoogleAuthProvider())
+      .then((result) => {
+        if (isNull(result.user)) {
+          navigateTo("/login");
+        }
+
+        navigateTo("/");
+      })
+      .catch((error: FirebaseError) => {
+        handleFirebaseError(error);
+      });
+  }
+
+  function trySigninWithEmailAndPassword(): void {
+    const validate = _validateCredentials();
+
+    if (validate.isValid === false) {
+      triggerWarningModal(validate.error!);
+      return;
+    }
+
+    const { email, password } = registration.value;
+
+    signInWithEmailAndPassword(auth!, email, password)
       .then((result) => {
         if (isNull(result.user)) {
           navigateTo("/login");
@@ -66,30 +90,10 @@ export const useAuthComposable = () => {
   }
 
   function _validateRegistration(): Validation {
-    const { email, password, confirmPassword, apiKey } = registration.value;
+    const { password, confirmPassword, apiKey } = registration.value;
 
-    if (isEmptyString(email) || isNull(email)) {
-      return {
-        isValid: false,
-        error: "Email is required",
-      };
-    } else {
-      const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const validateRegex = emailRegex.test(email);
-
-      if (validateRegex === false) {
-        return {
-          isValid: false,
-          error: "The email format you entered is invalid",
-        };
-      }
-    }
-
-    if (isEmptyString(password) || isNull(password)) {
-      return {
-        isValid: false,
-        error: "Password is required",
-      };
+    if (_validateCredentials().isValid === false) {
+      return _validateCredentials();
     }
 
     if (isEmptyString(confirmPassword) || isNull(confirmPassword)) {
@@ -118,10 +122,43 @@ export const useAuthComposable = () => {
     };
   }
 
+  function _validateCredentials(): Validation {
+    const { email, password } = registration.value;
+
+    if (isEmptyString(email) || isNull(email)) {
+      return {
+        isValid: false,
+        error: "Email is required",
+      };
+    } else {
+      const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const validateRegex = emailRegex.test(email);
+
+      if (validateRegex === false) {
+        return {
+          isValid: false,
+          error: "The email format you entered is invalid",
+        };
+      }
+    }
+
+    if (isEmptyString(password) || isNull(password)) {
+      return {
+        isValid: false,
+        error: "Password is required",
+      };
+    }
+
+    return {
+      isValid: true,
+    };
+  }
+
   return {
     registration,
 
     trySignInWithGoogle,
+    trySigninWithEmailAndPassword,
     trySignInOut,
     tryCreateUserWithEmailAndPassword,
   };
