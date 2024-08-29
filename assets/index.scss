@@ -3,12 +3,14 @@ $baby-blue: #68bbe3;
 $blue-grotto: #0e86d4;
 $navy-blue: #003060;
 $gray: #404654;
+$warning: #facd1c;
 
 @use "bulma/sass" with (
   //Colors
   $grey-light: $navy-blue,
   $primary: $blue,
   $link: $baby-blue,
+  $warning: $warning,
   //Font
   $family-primary: '"Moderustic", sans-serif', 
 );

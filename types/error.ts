@@ -16,4 +16,7 @@ export enum FirebaseTypeError {
   OPERATION_NOT_ALLOWED = "auth/operation-not-allowed",
   TOO_MANY_REQUESTS = "auth/too-many-requests",
   NETWORK_REQUEST_FAILED = "auth/network-request-failed",
+  UNAUTHORIZED_DOMANIN = "auth/unauthorized-domain",
+
+  AUTH_POPUP_CLOSED_BY_USER = "auth/popup-closed-by-user",
 }

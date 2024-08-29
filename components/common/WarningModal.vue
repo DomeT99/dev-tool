@@ -13,7 +13,9 @@ const { warningData, closeWarningModal } = useErrorComposable();
           @click="closeWarningModal"
         ></button>
       </header>
-      <section class="modal-card-body">{{ warningData.message }}</section>
+      <section class="modal-card-body is-size-4">
+        {{ warningData.message }}
+      </section>
     </div>
   </div>
 </template>

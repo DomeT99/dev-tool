@@ -17,7 +17,7 @@ export const useErrorStore = defineStore("error", () => {
     warningData.value.message = "";
   }
 
-  function handleFirebaseError(error: FirebaseError) {
+  function handleFirebaseError(error: FirebaseError) { 
     switch (error.code) {
       case FirebaseTypeError.WEAK_PASSWORD:
         triggerWarningModal("Password should be at least 6 characters");
@@ -51,6 +51,14 @@ export const useErrorStore = defineStore("error", () => {
       case FirebaseTypeError.NETWORK_REQUEST_FAILED:
         triggerWarningModal("Network request failed");
         break;
+
+      case FirebaseTypeError.UNAUTHORIZED_DOMANIN:
+        triggerWarningModal("This domain is not authorized to use Google Auth");
+        break;
+
+      case FirebaseTypeError.AUTH_POPUP_CLOSED_BY_USER: // User closed the popup
+        break;
+
       default:
         triggerWarningModal("Unknown error");
         break;

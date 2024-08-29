@@ -1,7 +1,16 @@
 .modal {
+  .modal-card {
+    border-bottom: 2px solid $gray !important;
+    border-radius: 20px;
+  }
   .modal-card-head {
     box-shadow: none;
     border-bottom: 2px solid $gray !important;
+    background-color: $warning;
+    height: 5vh;
+    .modal-card-title {
+      font-weight: bold;
+    }
   }
 
   .modal-card-foot {
