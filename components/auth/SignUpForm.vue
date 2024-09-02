@@ -6,9 +6,7 @@ const { registration, tryCreateUserWithEmailAndPassword } = useAuthComposable();
 </script>
 
 <template>
-  <form class="card container is-max-tablet p-6">
-    <h1 class="title has-text-centered">Create new account</h1>
-
+  <GeneralForm :data="{ title: 'Create new account' }">
     <div class="field">
       <label class="label">Email</label>
       <div class="control">
@@ -69,5 +67,5 @@ const { registration, tryCreateUserWithEmailAndPassword } = useAuthComposable();
         Already have an account? <NuxtLink to="/login">Continue</NuxtLink>
       </p>
     </div>
-  </form>
+  </GeneralForm>
 </template>

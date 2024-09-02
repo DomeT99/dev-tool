@@ -7,9 +7,7 @@ const { trySignInWithGoogle, trySigninWithEmailAndPassword, registration } =
 </script>
 
 <template>
-  <form class="card container is-max-tablet p-6">
-    <h1 class="title has-text-centered">Welcome back</h1>
-
+  <GeneralForm :data="{ title: 'Welcome back' }">
     <div class="field">
       <label class="label">Email</label>
       <div class="control">
@@ -57,5 +55,5 @@ const { trySignInWithGoogle, trySigninWithEmailAndPassword, registration } =
         @click="trySignInWithGoogle"
       />
     </div>
-  </form>
+  </GeneralForm>
 </template>
