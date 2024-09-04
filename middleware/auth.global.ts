@@ -1,6 +1,24 @@
+import type { FirebaseError } from "firebase/app";
+import type { IdTokenResult } from "firebase/auth";
+import { useErrorStore } from "~/store/errorStore";
+
 export default defineNuxtRouteMiddleware(async (to, from) => {
+  const { handleFirebaseError } = useErrorStore();
   const user = await getCurrentUser();
+
   if (user === null && to.fullPath !== "/login" && to.fullPath !== "/signup") {
     return navigateTo("/login");
-  } 
+  }
+
+  user
+    ?.getIdTokenResult(true)
+    .then((tokenData: IdTokenResult) => {
+      if (parseInt(tokenData!.expirationTime) < Date.now()) {
+        return navigateTo("/login");
+      }
+      return navigateTo("/");
+    })
+    .catch((error: FirebaseError) => {
+      handleFirebaseError(error);
+    });
 });
