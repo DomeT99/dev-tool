@@ -9,11 +9,12 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (user === null && to.fullPath !== "/login" && to.fullPath !== "/signup") {
     return navigateTo("/login");
   }
-
   user
     ?.getIdTokenResult(true)
     .then((tokenData: IdTokenResult) => {
-      if (parseInt(tokenData!.expirationTime) < Date.now()) {
+      const expirationDate = new Date(tokenData!.expirationTime).getTime();
+      
+      if (expirationDate < Date.now()) {
         return navigateTo("/login");
       }
       return navigateTo("/");
