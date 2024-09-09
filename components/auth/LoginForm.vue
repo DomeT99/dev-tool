@@ -31,6 +31,7 @@ const { trySignInWithGoogle, trySigninWithEmailAndPassword, registration } =
         />
       </div>
     </div>
+    <label for="label">Forgot your password? </label>
 
     <div class="control mt-6">
       <EButton
