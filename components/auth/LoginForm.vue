@@ -1,7 +1,9 @@
 <script setup lang="ts">
 //@ts-ignore
 import { EButton, EText } from "easy-kit-component";
+import { useLoadingStore } from "~/store/loadingStore";
 
+const loadingStore = useLoadingStore();
 const { trySignInWithGoogle, trySigninWithEmailAndPassword, registration } =
   useAuthComposable();
 </script>
@@ -35,6 +37,7 @@ const { trySignInWithGoogle, trySigninWithEmailAndPassword, registration } =
 
     <div class="control mt-6">
       <EButton
+        :class="{ 'is-loading': loadingStore.isLoading }"
         class="button is-primary is-medium w-100"
         @click="trySigninWithEmailAndPassword"
         >Sign In</EButton

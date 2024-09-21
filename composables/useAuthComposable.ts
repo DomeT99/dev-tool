@@ -8,9 +8,11 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { useErrorStore } from "~/store/errorStore";
+import { useLoadingStore } from "~/store/loadingStore";
 import type { Registration, Validation } from "~/types/auth";
 export const useAuthComposable = () => {
   const { triggerWarningModal, handleFirebaseError } = useErrorStore();
+  const { handleLoading } = useLoadingStore();
   const auth = useFirebaseAuth();
 
   const registration = ref<Registration>({
@@ -44,17 +46,19 @@ export const useAuthComposable = () => {
 
     const { email, password } = registration.value;
 
-    signInWithEmailAndPassword(auth!, email, password)
-      .then((result) => {
-        if (isNull(result.user)) {
-          navigateTo("/login");
-        }
+    handleLoading(() =>
+      signInWithEmailAndPassword(auth!, email, password)
+        .then((result) => {
+          if (isNull(result.user)) {
+            navigateTo("/login");
+          }
 
-        navigateTo("/");
-      })
-      .catch((error: FirebaseError) => {
-        handleFirebaseError(error);
-      });
+          navigateTo("/");
+        })
+        .catch((error: FirebaseError) => {
+          handleFirebaseError(error);
+        })
+    );
   }
 
   function trySignInOut(): void {
@@ -77,17 +81,19 @@ export const useAuthComposable = () => {
 
     const { email, password } = registration.value;
 
-    createUserWithEmailAndPassword(auth!, email, password)
-      .then((result) => {
-        if (isNull(result.user)) {
-          navigateTo("/signup");
-        }
+    handleLoading(() =>
+      createUserWithEmailAndPassword(auth!, email, password)
+        .then((result) => {
+          if (isNull(result.user)) {
+            navigateTo("/signup");
+          }
 
-        navigateTo("/");
-      })
-      .catch((error: FirebaseError) => {
-        handleFirebaseError(error);
-      });
+          navigateTo("/");
+        })
+        .catch((error: FirebaseError) => {
+          handleFirebaseError(error);
+        })
+    );
   }
 
   function tryResetPasswordWithEmail(): void {

@@ -3,7 +3,6 @@ import type { IdTokenResult } from "firebase/auth";
 import { useErrorStore } from "~/store/errorStore";
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
-  debugger;
   const { handleFirebaseError } = useErrorStore();
   const user = await getCurrentUser();
 
