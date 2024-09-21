@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   GoogleAuthProvider,
 } from "firebase/auth";
 import { useErrorStore } from "~/store/errorStore";
@@ -89,6 +90,18 @@ export const useAuthComposable = () => {
       });
   }
 
+  function tryResetPasswordWithEmail(): void {
+    const { email } = registration.value;
+
+    sendPasswordResetEmail(auth!, email)
+      .then(() => {
+        navigateTo("/login");
+      })
+      .catch((error: FirebaseError) => {
+        handleFirebaseError(error);
+      });
+  }
+
   function _validateRegistration(): Validation {
     const { password, confirmPassword, apiKey } = registration.value;
 
@@ -161,5 +174,6 @@ export const useAuthComposable = () => {
     trySigninWithEmailAndPassword,
     trySignInOut,
     tryCreateUserWithEmailAndPassword,
+    tryResetPasswordWithEmail,
   };
 };

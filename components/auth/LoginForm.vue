@@ -31,7 +31,7 @@ const { trySignInWithGoogle, trySigninWithEmailAndPassword, registration } =
         />
       </div>
     </div>
-    <label for="label">Forgot your password? </label>
+    <NuxtLink to="/login/reset">Forgot your password?</NuxtLink>
 
     <div class="control mt-6">
       <EButton
