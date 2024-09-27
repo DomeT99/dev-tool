@@ -16,6 +16,8 @@ export const useAuthComposable = () => {
   const auth = useFirebaseAuth();
 
   const registration = ref<Registration>({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -109,7 +111,22 @@ export const useAuthComposable = () => {
   }
 
   function _validateRegistration(): Validation {
-    const { password, confirmPassword, apiKey } = registration.value;
+    const { firstName, lastName, password, confirmPassword, apiKey } =
+      registration.value;
+
+    if (isEmptyString(firstName) || isNull(firstName)) {
+      return {
+        isValid: false,
+        error: "First name is required",
+      };
+    }
+
+    if (isEmptyString(lastName) || isNull(lastName)) {
+      return {
+        isValid: false,
+        error: "Last name is required",
+      };
+    }
 
     if (_validateCredentials().isValid === false) {
       return _validateCredentials();

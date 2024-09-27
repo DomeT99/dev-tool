@@ -10,6 +10,28 @@ const { registration, tryCreateUserWithEmailAndPassword } = useAuthComposable();
 <template>
   <GeneralForm :data="{ title: 'Create new account' }">
     <div class="field">
+      <label class="label">First name</label>
+      <div class="control">
+        <EText
+          class="input is-medium"
+          placeholder="Enter your first name"
+          v-model="registration.firstName"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Last name</label>
+      <div class="control">
+        <EText
+          class="input is-medium"
+          placeholder="Enter your last name"
+          v-model="registration.lastName"
+        />
+      </div>
+    </div>
+
+    <div class="field">
       <label class="label">Email</label>
       <div class="control">
         <EText
@@ -58,8 +80,8 @@ const { registration, tryCreateUserWithEmailAndPassword } = useAuthComposable();
 
     <div class="control mt-6">
       <EButton
-        :class="{ 'is-loading': loadingStore.isLoading }"
         class="button is-primary is-medium w-100"
+        :class="{ 'is-loading': loadingStore.isLoading }"
         @click="tryCreateUserWithEmailAndPassword"
         >Sign Up</EButton
       >

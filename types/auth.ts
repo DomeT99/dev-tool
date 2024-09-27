@@ -4,6 +4,8 @@ export type Authentication = {
 };
 
 export type Registration = Authentication & {
+  firstName: string;
+  lastName: string;
   confirmPassword: string;
   apiKey: string;
 };
