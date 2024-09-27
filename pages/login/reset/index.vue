@@ -1,8 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  layout: "auth",
+});
+</script>
 <template>
-  <div class="mt-6 columns">
-    <div class="column is-12">
-      <AuthResetForm />
-    </div>
-  </div>
+  <AuthResetForm />
 </template>
