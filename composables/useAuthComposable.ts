@@ -14,7 +14,7 @@ import type { Registration, Validation } from "~/types/auth";
 export const useAuthComposable = () => {
   const { triggerWarningModal, handleFirebaseError } = useErrorStore();
   const { handleLoading } = useLoadingStore();
-  const { createUserData } = useUserStore();
+  const { user, createUserData } = useUserStore();
   const auth = useFirebaseAuth();
 
   const registration = ref<Registration>({
@@ -91,6 +91,13 @@ export const useAuthComposable = () => {
           if (isNull(result.user)) {
             navigateTo("/signup");
           }
+         
+          user.firstName = registration.value.firstName;
+          user.lastName = registration.value.lastName;
+          user.email = registration.value.email;
+          user.password = registration.value.password;
+          user.apiKey = registration.value.apiKey;
+
           createUserData(() => navigateTo("/"));
         })
         .catch((error: FirebaseError) => {
