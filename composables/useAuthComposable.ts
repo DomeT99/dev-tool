@@ -15,6 +15,7 @@ export const useAuthComposable = () => {
   const { handleLoading } = useLoadingStore();
   const auth = useFirebaseAuth();
 
+
   const registration = ref<Registration>({
     firstName: "",
     lastName: "",
