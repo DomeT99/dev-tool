@@ -14,7 +14,7 @@ import type { Registration, Validation } from "~/types/auth";
 export const useAuthComposable = () => {
   const { triggerWarningModal, handleFirebaseError } = useErrorStore();
   const { handleLoading } = useLoadingStore();
-  const { createUser } = useUserStore();
+  const { createUserData } = useUserStore();
   const auth = useFirebaseAuth();
 
   const registration = ref<Registration>({
@@ -91,7 +91,7 @@ export const useAuthComposable = () => {
           if (isNull(result.user)) {
             navigateTo("/signup");
           }
-          createUser(() => navigateTo("/"));
+          createUserData(() => navigateTo("/"));
         })
         .catch((error: FirebaseError) => {
           handleFirebaseError(error);
