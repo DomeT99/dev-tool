@@ -9,12 +9,13 @@ import {
 } from "firebase/auth";
 import { useErrorStore } from "~/store/errorStore";
 import { useLoadingStore } from "~/store/loadingStore";
+import { useUserStore } from "~/store/profile/userStore";
 import type { Registration, Validation } from "~/types/auth";
 export const useAuthComposable = () => {
   const { triggerWarningModal, handleFirebaseError } = useErrorStore();
   const { handleLoading } = useLoadingStore();
+  const { createUser } = useUserStore();
   const auth = useFirebaseAuth();
-
 
   const registration = ref<Registration>({
     firstName: "",
@@ -90,8 +91,7 @@ export const useAuthComposable = () => {
           if (isNull(result.user)) {
             navigateTo("/signup");
           }
-
-          navigateTo("/");
+          createUser(() => navigateTo("/"));
         })
         .catch((error: FirebaseError) => {
           handleFirebaseError(error);
