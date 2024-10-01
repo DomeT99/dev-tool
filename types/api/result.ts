@@ -2,7 +2,7 @@ export type Result = {
   data: any;
   statusCode: ResultStatusCode;
   message: string;
-  success: false;
+  success: boolean;
 };
 
 export enum ResultStatusCode {

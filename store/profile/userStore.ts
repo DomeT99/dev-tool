@@ -10,7 +10,7 @@ export const useUserStore = defineStore("user", () => {
   });
 
   async function getUserData(): Promise<void> {}
-  async function createUserData(callback: () => void): Promise<void> {
+  async function createUserData(callback: () => void): Promise<void> { 
     const { data, error } = await useFetch(
       "/api/profileController/post/profile",
       {
@@ -19,12 +19,14 @@ export const useUserStore = defineStore("user", () => {
       }
     );
 
-    if (isTrue(error.value)) {
-      throw new Error(error.value?.message);
+    if (!isNull(error.value)) {
+      console.log(error);
     }
 
     if (isTrue(data.value?.data.success)) {
       callback();
+    } else {
+      throw new Error(data.value?.data.message);
     }
   }
 
